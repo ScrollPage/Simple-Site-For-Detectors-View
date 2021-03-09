@@ -4,7 +4,7 @@ from asgiref.sync import sync_to_async
 
 import os
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_mqtt.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 django.setup()
 
 from data.models import Data

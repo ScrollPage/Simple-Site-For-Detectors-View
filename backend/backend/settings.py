@@ -130,3 +130,19 @@ CORS_ORIGIN_WHITELIST = (
     u'http://127.0.0.1:3000',
     u'http://localhost:3000',
 )
+
+# MQTT CONFIG
+MQTT_CONFIG = {
+    'listeners': {
+        'default': {
+            'type': 'tcp',
+            'bind': 'localhost:1883',    # 0.0.0.0:1883
+            'max-connections': 50000,
+        },
+    },
+    'sys_interval': 5,
+    'topic-check': {
+        'enabled': True,
+        'plugins': ['topic_taboo'],
+    }
+}
