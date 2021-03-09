@@ -13,7 +13,7 @@ from service import split_json_and_create_data
 
 logger = logging.getLogger(__name__)
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_mqtt.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 
 broker = Broker(settings.MQTT_CONFIG)
 
