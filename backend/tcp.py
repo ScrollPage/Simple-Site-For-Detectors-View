@@ -39,7 +39,6 @@ def start():
     print(f"[LISTENING] Server is listening on {s.SERVER}")
     while True:
         conn, addr = server.accept()
-        print(type(conn))
         thread = threading.Thread(target=handle_client, args=(conn, addr))
         thread.start()
         print(f"[ACTIVE CONNECTIONS] {threading.activeCount() - 1}")
