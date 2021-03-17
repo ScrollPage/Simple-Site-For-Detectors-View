@@ -22,10 +22,7 @@ DISCONNECT_MESSAGE = "!DISCONNECT"
 def create_data(data, connected=True):
     try:
         instance = Data.objects.create(**data)
-    except TypeError as err:
-        print(f'[ERROR] {err}')
-        connected = False
-    except django.db.IntegrityError as err:
+    except (django.db.IntegrityError, TypeError) as err:
         print(f'[ERROR] {err}')
         connected = False
     else:

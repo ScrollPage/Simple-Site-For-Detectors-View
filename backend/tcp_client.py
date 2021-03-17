@@ -14,6 +14,6 @@ def send(msg):
     client.send(message)
     print(client.recv(2048).decode(s.FORMAT))
 
-send('{"lightning": 12.3, "humidity": 10.12}')
+send('{"lightning": 12.3, "humidity": 10.12, "temp": 12}')
 
 send(s.DISCONNECT_MESSAGE)
