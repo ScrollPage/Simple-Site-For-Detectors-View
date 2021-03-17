@@ -4,13 +4,6 @@ import json
 
 import service as s
 
-HEADER = 128
-PORT = 5050
-SERVER = socket.gethostbyname(socket.gethostname())
-ADDR = (SERVER, PORT)
-FORMAT = 'utf-8'
-DISCONNECT_MESSAGE = "!DISCONNECT"
-
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(s.ADDR)
 
@@ -32,7 +25,6 @@ def handle_client(conn, addr):
 
     print(f"[DISCONNECT] {addr[0]}:{addr[1]}")
     conn.close()
-        
 
 def start():
     server.listen()
