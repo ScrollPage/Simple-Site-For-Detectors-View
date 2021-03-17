@@ -24,7 +24,6 @@ def handle_client(conn, addr):
             msg_length = int(msg_length)
             msg = conn.recv(msg_length).decode(s.FORMAT)
             if msg == s.DISCONNECT_MESSAGE:
-
                 connected = False
             else:
                 print(f"[NEW MESSAGE] Message from {addr[0]}:{addr[1]}: {msg}")
@@ -40,6 +39,7 @@ def start():
     print(f"[LISTENING] Server is listening on {s.SERVER}")
     while True:
         conn, addr = server.accept()
+        print(type(conn))
         thread = threading.Thread(target=handle_client, args=(conn, addr))
         thread.start()
         print(f"[ACTIVE CONNECTIONS] {threading.activeCount() - 1}")

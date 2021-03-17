@@ -1,7 +1,5 @@
 import django
-import json
 import socket
-
 
 from asgiref.sync import sync_to_async
 
@@ -19,7 +17,7 @@ ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
 
-def create_data(data, connected=True):
+def create_data(data: dict, connected: bool=True) -> bool:
     try:
         instance = Data.objects.create(**data)
     except (django.db.IntegrityError, TypeError) as err:
@@ -30,7 +28,7 @@ def create_data(data, connected=True):
     finally:
         return connected
 
-def convert_to_json(msg, conn, connected=True):
+def convert_to_json(msg: str, conn: socket.socket, connected: bool=True) -> bool:
     try:
         data = json.loads(msg)
     except json.JSONDecodeError:

@@ -5,7 +5,7 @@ import service as s
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(s.ADDR)
 
-def send(msg):
+def send(msg: str):
     message = msg.encode(s.FORMAT)
     msg_length = len(message)
     send_length = str(msg_length).encode(s.FORMAT)
