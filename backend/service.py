@@ -11,6 +11,11 @@ django.setup()
 
 from data.models import Data
 
+@sync_to_async
+def split_json_and_create_data(data):
+    data['detector'] = get_object_or_404(Detector, id=data.pop('id'))
+    DetectorData.objects.create(**data)
+
 HEADER = 128
 PORT = 5050
 SERVER = socket.gethostbyname(socket.gethostname())
