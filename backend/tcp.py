@@ -12,16 +12,13 @@ def handle_client(conn, addr):
 
     connected = True
     while connected:
-        msg_length = conn.recv(s.HEADER).decode(s.FORMAT)
-        if msg_length:
-            msg_length = int(msg_length)
-            msg = conn.recv(msg_length).decode(s.FORMAT)
-            if msg == s.DISCONNECT_MESSAGE:
-                connected = False
-            else:
-                print(f"[NEW MESSAGE] Message from {addr[0]}:{addr[1]}: {msg}")
-                connected = s.convert_to_json(msg, conn)
-                conn.send(f"Msg {msg} received".encode(s.FORMAT))
+        msg = conn.recv(s.HEADER).decode(s.FORMAT)
+        if msg == s.DISCONNECT_MESSAGE:
+            connected = False
+        else:
+            print(f"[NEW MESSAGE] Message from {addr[0]}:{addr[1]}: {msg}")
+            connected = s.convert_to_json(msg, conn)
+            conn.send(f"Msg {msg} received".encode(s.FORMAT))
 
     print(f"[DISCONNECT] {addr[0]}:{addr[1]}")
     conn.close()
