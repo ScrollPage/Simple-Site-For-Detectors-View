@@ -17,12 +17,12 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 
 broker = Broker(settings.MQTT_CONFIG)
 
-async def startBroker():
+async def start_broker():
     await broker.start()
 
-async def brokerGetMessage():
+async def broker_get_message():
     client = MQTTClient()
-    await client.connect('mqtt://localhost:1883/')
+    await client.connect('mqtt://192.168.1.254:5050/')
     await client.subscribe([
         ('data', QOS_1)
     ])
@@ -40,6 +40,6 @@ async def brokerGetMessage():
 if __name__ == '__main__':
     formatter = "[%(asctime)s] :: %(levelname)s :: %(name)s :: %(message)s"
     logging.basicConfig(level=logging.INFO, format=formatter)
-    asyncio.get_event_loop().run_until_complete(startBroker())
-    asyncio.get_event_loop().run_until_complete(brokerGetMessage())
+    asyncio.get_event_loop().run_until_complete(start_broker())
+    asyncio.get_event_loop().run_until_complete(broker_get_message())
     asyncio.get_event_loop().run_forever()
