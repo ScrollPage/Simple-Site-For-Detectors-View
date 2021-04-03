@@ -7,6 +7,7 @@ from asyncio.exceptions import IncompleteReadError
 import json
 import time
 from loguru import logger
+import logging
 
 from hbmqtt.broker import Broker
 from hbmqtt.client import MQTTClient, ClientException
@@ -21,7 +22,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 broker = Broker(settings.MQTT_CONFIG)
 
 async def start_broker():
-    logger.info('Started!')
+    # logger.info('Started!')
     await broker.start()
 
 # async def broker_get_message():
@@ -42,6 +43,8 @@ async def start_broker():
 
 
 if __name__ == '__main__':
+    formatter = "[%(asctime)s] :: %(levelname)s :: %(name)s :: %(message)s"
+    logging.basicConfig(level=logging.INFO, format=formatter)
     asyncio.get_event_loop().run_until_complete(start_broker())
     # asyncio.get_event_loop().run_until_complete(broker_get_message())
     asyncio.get_event_loop().run_forever()
