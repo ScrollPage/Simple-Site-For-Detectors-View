@@ -137,7 +137,7 @@ MQTT_CONFIG = {
     'listeners': {
         'default': {
             'type': 'tcp',
-            'bind': 'localhost:1883',    # 0.0.0.0:1883
+            'bind': '127.0.0.1:1883',
             'max-connections': 50000,
         },
     },
