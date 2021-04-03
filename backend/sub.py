@@ -5,6 +5,8 @@ import asyncio
 import time
 import sys
 
+from backend.service import SERVER, PORT
+
 # logger.add(sys.stdout, colorize=True, format="<green>{time}</green> <lvl>{message}</lvl>")
 
 def on_connect(client, userdata, flags, rc):
@@ -27,7 +29,7 @@ client.on_message = on_message
 client.on_disconnect = on_disconnect
 # client.on_log = on_log
 
-client.connect("127.0.0.1", 1883, 60)
+client.connect(SERVER, PORT, 60)
 
 
 if __name__ == '__main__':
