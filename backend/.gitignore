@@ -150,3 +150,5 @@ media/
 !**/migrations/__init__.py
 
 local2.py
+
+.idea
