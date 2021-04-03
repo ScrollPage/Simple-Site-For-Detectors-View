@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
 from loguru import logger
-from backend.service import SERVER, PORT
+from service import SERVER, PORT
 
 def on_connect(client, userdata, flags, rc):
     logger.info(f'Connected with result code {rc}')

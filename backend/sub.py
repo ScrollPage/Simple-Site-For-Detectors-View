@@ -5,7 +5,7 @@ import asyncio
 import time
 import sys
 
-from backend.service import SERVER, PORT
+from service import SERVER, PORT
 
 # logger.add(sys.stdout, colorize=True, format="<green>{time}</green> <lvl>{message}</lvl>")
 

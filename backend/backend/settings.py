@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-from .service import SERVER, PORT
+# from .service import SERVER, PORT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,18 +133,18 @@ CORS_ORIGIN_WHITELIST = (
     u'http://localhost:3000',
 )
 
-# MQTT CONFIG
-MQTT_CONFIG = {
-    'listeners': {
-        'default': {
-            'type': 'tcp',
-            'bind': f'{SERVER}:{PORT}',
-            'max-connections': 50000,
-        },
-    },
-    'sys_interval': 5,
-    'topic-check': {
-        'enabled': True,
-        'plugins': ['topic_taboo'],
-    }
-}
+# # MQTT CONFIG
+# MQTT_CONFIG = {
+#     'listeners': {
+#         'default': {
+#             'type': 'tcp',
+#             'bind': f'{SERVER}:{PORT}',
+#             'max-connections': 50000,
+#         },
+#     },
+#     'sys_interval': 5,
+#     'topic-check': {
+#         'enabled': True,
+#         'plugins': ['topic_taboo'],
+#     }
+# }
