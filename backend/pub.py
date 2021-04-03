@@ -10,7 +10,7 @@ def on_publish(client, userdata, mid):
 client = mqtt.Client()
 client.on_publish = on_publish
 client.on_connect = on_connect
-client.connect('127.0.0.1', 1883)
+client.connect('127.0.0.1', 1883, 60)
 
 while True:
     client.publish('data', input())

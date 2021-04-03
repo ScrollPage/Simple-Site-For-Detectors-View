@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
 from loguru import logger
+import asyncio
 
 import time
 import sys
@@ -28,5 +29,8 @@ client.on_disconnect = on_disconnect
 
 client.connect("127.0.0.1", 1883, 60)
 
-while True:
-    client.loop_forever()
+
+if __name__ == '__main__':
+    asyncio.get_event_loop().run_until_complete(client.loop_forever())
+    asyncio.get_event_loop().run_forever()
+    
