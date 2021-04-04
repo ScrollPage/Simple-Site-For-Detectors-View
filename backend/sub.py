@@ -31,7 +31,6 @@ client.on_disconnect = on_disconnect
 
 client.connect(SERVER, PORT, 60)
 
-
 if __name__ == '__main__':
     asyncio.get_event_loop().run_until_complete(client.loop_forever())
     asyncio.get_event_loop().run_forever()
